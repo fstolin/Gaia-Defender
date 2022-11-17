@@ -6,14 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     // Movement
     [SerializeField] float movementSpeed = 50f;
-    [SerializeField] float movementMaximumOffsetX = 13f;
-    [SerializeField] float movementMaximumOffsetY = 8f;
-    [SerializeField] float movementMinimumOffsetY = -8f;
+    [SerializeField] float movementMaximumOffsetX = 20f;
+    [SerializeField] float movementMaximumOffsetY = 14f;
+    [SerializeField] float movementMinimumOffsetY = -14f;
     // Rotation
     [SerializeField] float pitchFactor = -1.5f;
     [SerializeField] float pitchUserFactor = -15f;
     [SerializeField] float yawFactor = 2.5f;
-    [SerializeField] float rollFactor = -20f;
+    [SerializeField] float rollFactor = -40f;
+    [SerializeField] float rotationFactor = 3f;
 
     float xThrow, yThrow;
 
@@ -36,8 +37,10 @@ public class PlayerController : MonoBehaviour
         float yaw = transform.localPosition.x * yawFactor;
         float roll = positionAffectedRoll;
 
-        // Local rotation update
-        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+        // Target location -> to not be choppy
+        Quaternion targetLocation = Quaternion.Euler(pitch, yaw, roll);
+        // Rotate towards angle -> finishing
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetLocation, rotationFactor);
     }
 
     private void HandleMovement()

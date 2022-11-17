@@ -471,15 +471,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205482600}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.17, y: 92.85, z: 63.57}
+  m_LocalRotation: {x: 0.22620809, y: -0, z: -0, w: 0.974079}
+  m_LocalPosition: {x: 102.61, y: 96.58, z: 63.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
   - {fileID: 1570700896}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.148, y: 0, z: 0}
 --- !u!1001 &281110654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1774,7 +1774,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 85
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1800,12 +1800,42 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.01259025, y: -0, z: -0, w: 0.9999208}
-  m_LocalPosition: {x: 0, y: 5.91, z: -18.51}
+  m_LocalPosition: {x: 0, y: 0.41, z: -18.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 205482602}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 1.443, y: 0, z: 0}
+--- !u!1 &971750620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 971750621}
+  m_Layer: 0
+  m_Name: Particles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &971750621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971750620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1045007774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1996,18 +2026,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 205482602}
     m_Modifications:
-    - target: {fileID: 1570700899, guid: 99c8c6621512a0e4c836167c1240a6a0, type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 963194227}
-    - target: {fileID: 1570700899, guid: 99c8c6621512a0e4c836167c1240a6a0, type: 3}
-      propertyPath: movementProgress
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1570700899, guid: 99c8c6621512a0e4c836167c1240a6a0, type: 3}
-      propertyPath: controlThrowOffestX
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3513716454821695168, guid: 99c8c6621512a0e4c836167c1240a6a0, type: 3}
       propertyPath: m_Name
       value: Playership (Player)
