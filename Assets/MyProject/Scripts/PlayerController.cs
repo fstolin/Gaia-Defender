@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float yawFactor = 2.5f;
     [SerializeField] float rollFactor = -40f;
     [SerializeField] float rotationFactor = 3f;
+    // Game Objects
+    [SerializeField] GameObject[] lasers;
 
     float xThrow, yThrow;
 
@@ -23,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleMovement();
         HandleRotation();
+        HandleShooting();
     }
 
     private void HandleRotation()
@@ -61,4 +65,24 @@ public class PlayerController : MonoBehaviour
         transform.localPosition = new Vector3(newXPosition, newYPosition, transform.localPosition.z);
     }
 
+    private void HandleShooting()
+    {
+        // Fire!!
+        if (Input.GetMouseButton(0))
+        {
+            ShootWeapons(true);
+        } else // Not firing
+        {
+            ShootWeapons(false);
+        }
+    }
+
+    private void ShootWeapons(bool isShooting)
+    {
+        foreach (GameObject laser in lasers)
+        {
+            var laserEmission = laser.GetComponent<ParticleSystem>().emission;
+            laserEmission.enabled = isShooting;
+        }
+    }
 }
