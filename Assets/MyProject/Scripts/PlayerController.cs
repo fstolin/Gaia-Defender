@@ -23,10 +23,21 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Add laser emitter game objects here.")]               [SerializeField] GameObject[] lasers;
 
     float xThrow, yThrow;
+    private bool isCrashed;
 
+    public bool GetIsCrashed()
+    {
+        return isCrashed;
+    }
+
+    public void SetIsCrashed(bool value)
+    {
+        isCrashed = value;
+    }
 
     void Update()
     {
+        if (isCrashed) return;
         HandleMovement();
         HandleRotation();
         HandleShooting();
