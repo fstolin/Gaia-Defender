@@ -6,18 +6,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Movement
-    [SerializeField] float movementSpeed = 50f;
-    [SerializeField] float movementMaximumOffsetX = 20f;
-    [SerializeField] float movementMaximumOffsetY = 14f;
-    [SerializeField] float movementMinimumOffsetY = -14f;
+    [Header("Movement specifics")]
+    [Tooltip("How fast ship moves up and down based on input.")]    [SerializeField] float movementSpeed = 50f;
+    [Tooltip("X axis allowed offset of movement.")]                 [SerializeField] float movementMaximumOffsetX = 20f;
+    [Tooltip("Maximum Y axis offset of movement.")]                 [SerializeField] float movementMaximumOffsetY = 14f;
+    [Tooltip("Minimum / negativ allowed Y axis offset.")]           [SerializeField] float movementMinimumOffsetY = -14f;
     // Rotation
-    [SerializeField] float pitchFactor = -1.5f;
-    [SerializeField] float pitchUserFactor = -15f;
-    [SerializeField] float yawFactor = 2.5f;
-    [SerializeField] float rollFactor = -40f;
-    [SerializeField] float rotationFactor = 3f;
+    [Header("Rotation specifics")]
+    [Tooltip("Pitch factor based on position.")]                    [SerializeField] float pitchFactor = -1.5f;
+    [Tooltip("Pitch factor based on user input.")]                  [SerializeField] float pitchUserFactor = -15f;
+    [Tooltip("Yaw position factor.")]                               [SerializeField] float yawFactor = 2.5f;
+    [Tooltip("Roll input factor.")]                                 [SerializeField] float rollFactor = -40f;
+    [Tooltip("targetRotation method factor.")]                      [SerializeField] float rotationFactor = 3f;
     // Game Objects
-    [SerializeField] GameObject[] lasers;
+    [Header("Game object settings / lasers")]
+    [Tooltip("Add laser emitter game objects here.")]               [SerializeField] GameObject[] lasers;
 
     float xThrow, yThrow;
 
