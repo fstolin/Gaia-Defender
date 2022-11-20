@@ -37,10 +37,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Shooting is handled separatly before crashing
+        HandleShooting();
         if (isCrashed) return;
         HandleMovement();
         HandleRotation();
-        HandleShooting();
     }
 
     private void HandleRotation()
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
     private void HandleShooting()
     {
         // Fire!!
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !isCrashed)
         {
             ShootWeapons(true);
         } else // Not firing
