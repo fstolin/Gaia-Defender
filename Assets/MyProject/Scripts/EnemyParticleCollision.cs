@@ -6,25 +6,58 @@ public class EnemyParticleCollision : MonoBehaviour
 {
 
     [SerializeField] GameObject deathVFX;
+    [SerializeField] GameObject hitVFX;
     [SerializeField] Transform parent;
-    [SerializeField] int ScoreAwarded;
+    [SerializeField] int scoreAwarded = 15;
+    [SerializeField] int enemyHitpoints = 40;
+    [SerializeField] int damageOnHit = 5;
 
     ScoreBoard scoreBoard;
+    //bool IsScoreIncreased;
 
     private void Start()
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
+        AddRigidBody();
+    }
+
+    private void AddRigidBody()
+    {
+        Rigidbody rb = this.gameObject.AddComponent<Rigidbody>();
+        rb.useGravity = false;
     }
 
     private void OnParticleCollision(GameObject other)
     {
         ProcessHit();
-        KillEnemy();
+        DrawHitVFX(other);
+        Debug.Log(this.name);
+        Debug.Log(this.name + enemyHitpoints);
+        // Kill enemy if hitpoints are below or equals zero
+        if (enemyHitpoints <= 0) KillEnemy();
     }
 
     private void ProcessHit()
     {
-        scoreBoard.IncreaseScore(ScoreAwarded);
+        TakeDamage();
+        IncreaseScore();
+    }
+
+    private void DrawHitVFX(GameObject other)
+    {
+        ParticleSystem particleSystem = other.GetComponent<ParticleSystem>();
+        List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
+        particleSystem.GetCollisionEvents(gameObject, collisionEvents);
+        Vector3 collisionSpot = collisionEvents[0].intersection;
+
+        GameObject hitVFXgo = Instantiate(hitVFX, collisionSpot, Quaternion.identity);
+        hitVFXgo.transform.parent = parent;
+    }
+
+    private void IncreaseScore()
+    {
+        // If score wasn't increased already for this enemy, increase it
+        scoreBoard.IncreaseScore(scoreAwarded);
     }
 
     private void KillEnemy()
@@ -32,5 +65,11 @@ public class EnemyParticleCollision : MonoBehaviour
         GameObject vfx = Instantiate(deathVFX, this.transform.position, Quaternion.identity);
         vfx.transform.parent = parent;
         Destroy(this.gameObject);
+    }
+
+    private void TakeDamage()
+    {
+        // Reducing hitpoints on hit
+        enemyHitpoints -= damageOnHit;
     }
 }
