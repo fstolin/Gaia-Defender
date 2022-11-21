@@ -18,6 +18,7 @@ public class EnemyParticleCollision : MonoBehaviour
     private void Start()
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
+        // Adding rigidbody because of collisions
         AddRigidBody();
     }
 
@@ -31,8 +32,6 @@ public class EnemyParticleCollision : MonoBehaviour
     {
         ProcessHit();
         DrawHitVFX(other);
-        Debug.Log(this.name);
-        Debug.Log(this.name + enemyHitpoints);
         // Kill enemy if hitpoints are below or equals zero
         if (enemyHitpoints <= 0) KillEnemy();
     }

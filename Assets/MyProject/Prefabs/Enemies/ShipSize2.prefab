@@ -58,7 +58,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   scoreAwarded: 15
   enemyHitpoints: 40
-  damageOnHit: 5
+  damageOnHit: 10
 --- !u!1001 &449478798962509004
 PrefabInstance:
   m_ObjectHideFlags: 0

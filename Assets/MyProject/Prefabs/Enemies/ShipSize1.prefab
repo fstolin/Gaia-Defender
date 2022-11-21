@@ -56,8 +56,8 @@ MonoBehaviour:
   hitVFX: {fileID: 7708005420722908506, guid: 0fe771856d8a0ea4a9c20764fd57656a, type: 3}
   parent: {fileID: 0}
   scoreAwarded: 15
-  enemyHitpoints: 20
-  damageOnHit: 5
+  enemyHitpoints: 25
+  damageOnHit: 10
 --- !u!1001 &2204444044167083274
 PrefabInstance:
   m_ObjectHideFlags: 0
