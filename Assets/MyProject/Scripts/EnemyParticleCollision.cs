@@ -7,7 +7,7 @@ public class EnemyParticleCollision : MonoBehaviour
 
     [SerializeField] GameObject deathVFX;
     [SerializeField] GameObject hitVFX;
-    [SerializeField] Transform parent;
+    [SerializeField] GameObject parent;
     [SerializeField] int scoreAwarded = 15;
     [SerializeField] int enemyHitpoints = 40;
     [SerializeField] int damageOnHit = 5;
@@ -20,6 +20,7 @@ public class EnemyParticleCollision : MonoBehaviour
         scoreBoard = FindObjectOfType<ScoreBoard>();
         // Adding rigidbody because of collisions
         AddRigidBody();
+        parent = GameObject.FindWithTag("Respawn");
     }
 
     private void AddRigidBody()
@@ -50,7 +51,7 @@ public class EnemyParticleCollision : MonoBehaviour
         Vector3 collisionSpot = collisionEvents[0].intersection;
 
         GameObject hitVFXgo = Instantiate(hitVFX, collisionSpot, Quaternion.identity);
-        hitVFXgo.transform.parent = parent;
+        hitVFXgo.transform.parent = parent.transform;
     }
 
     private void IncreaseScore()
@@ -62,7 +63,7 @@ public class EnemyParticleCollision : MonoBehaviour
     private void KillEnemy()
     {
         GameObject vfx = Instantiate(deathVFX, this.transform.position, Quaternion.identity);
-        vfx.transform.parent = parent;
+        vfx.transform.parent = parent.transform;
         Destroy(this.gameObject);
     }
 
