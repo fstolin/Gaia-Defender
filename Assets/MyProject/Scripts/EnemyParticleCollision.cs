@@ -12,6 +12,7 @@ public class EnemyParticleCollision : MonoBehaviour
     [SerializeField] int damageOnHit = 5;
 
     GameObject parent;
+    GameObject explosionPlayer;
     ScoreBoard scoreBoard;
     //bool IsScoreIncreased;
 
@@ -72,5 +73,11 @@ public class EnemyParticleCollision : MonoBehaviour
     {
         // Reducing hitpoints on hit
         enemyHitpoints -= damageOnHit;
+    }
+
+    private void OnDestroy()
+    {
+        explosionPlayer = GameObject.FindGameObjectWithTag("ExplosionPlayer");
+        explosionPlayer.GetComponent<AudioSource>().Play();
     }
 }
